@@ -9,12 +9,17 @@ const sampleMenu = [
 ];
 
 export default function Menu() {
+  export default function Menu() {
   return (
     <div className="menu-container">
       <h2>Menu</h2>
       {sampleMenu.map(item => (
-        <FoodItem key={item.id} item={item} />
+        <div key={item.id} className="menu-item">
+          <FoodItem item={item} />
+        </div>
       ))}
     </div>
+  );
+}
   );
 }
