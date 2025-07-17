@@ -29,7 +29,7 @@ export default function Cart() {
             <div key={item.id} className="cart-item">
               <CartItem item={item} />
               <span className="quantity-badge">Qty: {item.quantity}</span>
-              <button onClick={() => decreaseQuantity(item.id)}>Remove</button>
+              <button onClick={() => decreaseQuantity(item.id)}>-</button>
             </div>
           ))}
           <Link to="/checkout"><button>Checkout</button></Link>
