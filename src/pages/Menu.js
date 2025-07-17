@@ -10,7 +10,7 @@ const sampleMenu = [
 
 export default function Menu() {
   return (
-    <div>
+    <div className="menu-container">
       <h2>Menu</h2>
       {sampleMenu.map(item => (
         <FoodItem key={item.id} item={item} />
