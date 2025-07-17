@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 
 export default function Cart() {
-  const { cart } = useContext(CartContext);
+  const { cart, decreaseQuantity } = useContext(CartContext);
 
-  // Group cart items by id and sum their quantities
   const groupedItems = cart.reduce((acc, item) => {
     if (acc[item.id]) {
-      acc[item.id].quantity += item.quantity || 1;  // assuming item.quantity or default 1
+      acc[item.id].quantity += item.quantity || 1;
     } else {
       acc[item.id] = { ...item, quantity: item.quantity || 1 };
     }
     return acc;
   }, {});
 
-  // Convert grouped items object back to array
   const uniqueItems = Object.values(groupedItems);
 
   return (
@@ -29,10 +27,9 @@ export default function Cart() {
         <>
           {uniqueItems.map(item => (
             <div key={item.id} className="cart-item">
-              {/* Pass the item with the grouped quantity */}
               <CartItem item={item} />
-              {/* Show quantity badge */}
               <span className="quantity-badge">Qty: {item.quantity}</span>
+              <button onClick={() => decreaseQuantity(item.id)}>Remove</button>
             </div>
           ))}
           <Link to="/checkout"><button>Checkout</button></Link>
