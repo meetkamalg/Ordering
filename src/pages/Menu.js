@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodItem from '../components/FoodItem';
+import './Menu.css';
 
 const sampleMenu = [
   { id: 1, name: 'Burger', price: 8.99 },
